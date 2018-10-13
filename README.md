@@ -21,24 +21,40 @@ Song G, Qu W, Liu X, et al. Approximate Calculation of Window Aggregate Function
 ## 修改记录：
 
 (1)修改nodeWindowagg文件：
+
 	(a)添加窗口聚合函数处理分支
+	
 		eval_windowaggregates_ttv_cr();
+		
 		eval_windowaggregates_ttv_cr_array();
+		
 		eval_windowaggregates_ttv_single();
+		
 		eval_windowaggregates_ttv_level();
+		
 		eval_windowaggregates_sample();
+		
 		以及其他辅助函数
+		
 	(b)修改WindowObjectData、WindowStatePerAggData结构体，添加新变量
+	
 	(c)修改ExecInitWindowAgg，添加对结构体内变量的初始化
+	
 	(d)修改ExecWindowAgg()函数，根据GUC参数enable_ttv的类型调用不同的窗口聚合函数处理分支（两个工作的处理分支还没有合并，只是用注释来来开启某个特定的优化工作）
 
 	
 (2)修改execnode.h
+
 	(a)修改WindowAggState、PlanState结构体，添加新变量
 	
 (3)修改pg_list.h 
+
 	(a)添加Tem_ListCell、Tem_List结构体
+	
 (4)修改tupelstore.c
+
 	(a)添加opt_tuplestore_seek_ptr()，opt_tuplestore_copy_ptr()处理函数
+	
 (5)修改guc_gp.h
+
 	(a)将enable_ttv、enable_sample参数添加到ConfigureNamesInt_gp中
