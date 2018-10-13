@@ -1,0 +1,5 @@
+create database foodb template template0;
+CREATE DATABASE
+
+DROP DATABASE foodb;
+DROP DATABASE
